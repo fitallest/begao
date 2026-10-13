@@ -111,7 +111,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ data, isOpen, onClose 
         <!-- Ảnh 1: Lớn, nghiêng trái -3deg -->
         <div class="col-span-7 bg-white p-3 pb-5 rounded-2xl shadow-xl border border-rose-100 -rotate-3 hover:rotate-0 transition-transform">
           <div class="aspect-[3/4] rounded-xl overflow-hidden bg-rose-50">
-            <img src="./image/baby-1.svg" onerror="this.src='./image/baby-1.jpg'" class="w-full h-full object-cover">
+            <img src="./image/baby-1.jpg" alt="Bé Công Chúa Nhỏ" class="w-full h-full object-cover">
           </div>
           <p class="font-cursive text-xl text-[#991b1b] text-center mt-2">Bé Công Chúa Nhỏ</p>
         </div>
@@ -119,7 +119,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ data, isOpen, onClose 
         <!-- Ảnh 2: Vừa, nghiêng phải +4deg -->
         <div class="col-span-5 bg-white p-2.5 pb-4 rounded-2xl shadow-xl border border-amber-100 rotate-4 hover:rotate-0 transition-transform -mt-6">
           <div class="aspect-[3/4] rounded-xl overflow-hidden bg-amber-50">
-            <img src="./image/baby-2.svg" onerror="this.src='./image/baby-2.jpg'" class="w-full h-full object-cover">
+            <img src="./image/baby-2.jpg" alt="Tung Tăng Bơi Lội" class="w-full h-full object-cover">
           </div>
           <p class="font-cursive text-lg text-amber-900 text-center mt-1.5">Tung Tăng Bơi Lội</p>
         </div>
@@ -129,7 +129,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ data, isOpen, onClose 
       <div class="flex justify-end pr-4">
         <div class="w-48 bg-white p-3 pb-4 rounded-2xl shadow-xl border border-rose-100 -rotate-2 hover:rotate-0 transition-transform">
           <div class="aspect-[3/4] rounded-xl overflow-hidden bg-rose-50">
-            <img src="./image/baby-3.svg" onerror="this.src='./image/baby-3.jpg'" class="w-full h-full object-cover">
+            <img src="./image/baby-3.jpg" alt="Áo Dài Đón Tết" class="w-full h-full object-cover">
           </div>
           <p class="font-cursive text-xl text-[#991b1b] text-center mt-2">Áo Dài Đón Tết</p>
         </div>
