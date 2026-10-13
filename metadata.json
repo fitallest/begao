@@ -1,0 +1,6 @@
+{
+  "name": "Thiệp Mời Thôi Nôi Bé Dương An Khánh",
+  "description": "Thiệp mời thôi nôi bé Dương An Khánh - Chủ Nhật, 18.10.2026 tại Tư Gia, Vĩnh Long.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

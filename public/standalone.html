@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thiệp Mời Thôi Nôi - Bé Dương An Khánh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+    .font-cursive { font-family: 'Great Vibes', cursive; }
+  </style>
+</head>
+<body class="bg-[#fff7f9] text-slate-800 antialiased min-h-screen py-8 px-4 selection:bg-rose-200">
+  <canvas id="fireworksCanvas" class="fixed inset-0 pointer-events-none z-20"></canvas>
+
+  <main class="max-w-xl mx-auto space-y-8 relative z-10">
+    <!-- Thiệp Mời Dạng Vòm Cung Chuẩn Mẫu -->
+    <div onclick="burst()" class="cursor-pointer bg-[#fff8fa] rounded-t-[140px] sm:rounded-t-[180px] rounded-b-3xl border-4 sm:border-[6px] border-[#fce7f3] shadow-2xl p-4 sm:p-5">
+      <div class="rounded-t-[120px] sm:rounded-t-[160px] rounded-b-2xl border border-[#fda4af]/60 bg-white/95 px-6 pt-12 pb-8 text-center space-y-4">
+        
+        <!-- Tiêu đề -->
+        <p class="text-[11px] sm:text-xs font-semibold tracking-[0.25em] text-[#991b1b] uppercase">
+          NHÂN DỊP MỪNG THÔI NÔI BÉ
+        </p>
+
+        <!-- Tên Bé Calligraphy -->
+        <h1 class="font-cursive text-5xl sm:text-7xl text-[#991b1b] py-1 select-none">
+          Dương An Khánh
+        </h1>
+
+        <!-- Lời mời -->
+        <div class="space-y-1 text-slate-800 pt-2">
+          <p class="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#881337]">
+            TRÂN TRỌNG KÍNH MỜI: QUÝ GIA ĐÌNH
+          </p>
+          <p class="text-[11px] sm:text-xs font-medium uppercase tracking-wider text-[#881337]">
+            ĐẾN DỰ BUỔI TIỆC THÂN MẬT CHUNG VUI CÙNG GIA ĐÌNH TẠI:
+          </p>
+          <div class="py-1">
+            <h2 class="font-cursive text-4xl sm:text-5xl text-[#991b1b]">
+              Tư Gia
+            </h2>
+          </div>
+          <p class="text-xs sm:text-sm font-bold text-[#881337] uppercase max-w-md mx-auto leading-relaxed">
+            KHÓM HÓA THÀNH - PHƯỜNG ĐÔNG THÀNH - TỈNH VĨNH LONG
+          </p>
+        </div>
+
+        <!-- Giờ & Ngày -->
+        <div class="pt-4 border-t border-[#fce7f3] space-y-2">
+          <p class="text-xs sm:text-sm font-semibold tracking-wider text-[#881337]">
+            VÀO LÚC: <span class="font-bold text-sm sm:text-base font-serif">11 GIỜ 00</span>
+          </p>
+          <div class="flex items-center justify-center gap-3 py-2 border-y border-[#fda4af]/50 text-xs sm:text-sm font-bold text-[#881337]">
+            <span>CHỦ NHẬT</span>
+            <span class="text-2xl sm:text-3xl font-serif text-[#991b1b] font-extrabold">18.10.2026</span>
+            <span>09 tháng 09 ÂL</span>
+          </div>
+        </div>
+
+        <!-- Chân thiệp -->
+        <div class="pt-4 flex items-center justify-between text-right">
+          <div class="text-left text-2xl">
+            🐉🌸
+          </div>
+          <div>
+            <p class="text-[10px] sm:text-[11px] font-semibold text-[#881337] leading-tight uppercase">
+              SỰ HIỆN DIỆN CỦA QUÝ KHÁCH<br>
+              LÀ LỜI CHÚC Ý NGHĨA NHẤT DÀNH<br>
+              CHO BÉ VÀ GIA ĐÌNH
+            </p>
+            <div class="pt-2">
+              <p class="text-xs sm:text-sm font-bold text-[#991b1b] uppercase font-serif">TRUNG - HON</p>
+              <p class="text-[10px] sm:text-xs font-semibold text-[#b91c1c] uppercase">KÍNH MỜI!</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Nút Chỉ Đường Google Maps -->
+    <div class="text-center">
+      <a href="https://www.google.com/maps/search/?api=1&query=Kh%C3%B3m+H%C3%B3a+Th%C3%A0nh+Ph%C6%B0%E1%BB%9Dng+%C4%90%C3%B4ng+Th%C3%A0nh+V%C4%A9nh+Long" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl bg-white hover:bg-rose-50 text-[#991b1b] text-xs sm:text-sm font-semibold border border-[#fda4af] shadow-md transition-all active:scale-95">
+        📍 Xem Chỉ Đường Google Maps Đến Tư Gia
+      </a>
+    </div>
+
+    <!-- 5 Khoảnh Khắc Đáng Yêu Của Bé (Bố cục Scrapbook hài hòa không có chỗ trống) -->
+    <div class="space-y-6 pt-2">
+      <div class="text-center">
+        <p class="font-cursive text-3xl sm:text-4xl text-[#991b1b]">5 Khoảnh Khắc Đáng Yêu Của Bé</p>
+        <p class="text-xs text-slate-500">Chặng đường 365 ngày lớn khôn (ảnh từ thư mục ./image/)</p>
+      </div>
+
+      <!-- Tầng 1: Ảnh 1 (Lớn) & Ảnh 2 (Vừa) -->
+      <div class="grid grid-cols-12 gap-3 items-center">
+        <div class="col-span-7 bg-white p-3 pb-5 rounded-2xl shadow-xl border border-rose-100 -rotate-3 hover:rotate-0 transition-transform">
+          <div class="aspect-[3/4] rounded-xl overflow-hidden bg-rose-50">
+            <img src="./image/baby-1.svg" onerror="this.src='./image/baby-1.jpg'" class="w-full h-full object-cover">
+          </div>
+          <p class="font-cursive text-xl text-[#991b1b] text-center mt-2">Bé Công Chúa Nhỏ</p>
+        </div>
+
+        <div class="col-span-5 bg-white p-2.5 pb-4 rounded-2xl shadow-xl border border-amber-100 rotate-4 hover:rotate-0 transition-transform -mt-6">
+          <div class="aspect-[3/4] rounded-xl overflow-hidden bg-amber-50">
+            <img src="./image/baby-2.svg" onerror="this.src='./image/baby-2.jpg'" class="w-full h-full object-cover">
+          </div>
+          <p class="font-cursive text-lg text-amber-900 text-center mt-1.5">Tung Tăng Bơi Lội</p>
+        </div>
+      </div>
+
+      <!-- Tầng 2: Thư Kỷ Niệm Yêu Thương + Ảnh 3 (Lấp kín chỗ trống, cân xứng tuyệt đẹp) -->
+      <div class="grid grid-cols-12 gap-3 items-center">
+        <!-- Thẻ lời chúc scrapbook bên trái -->
+        <div class="col-span-6 bg-[#fff9fa] p-3.5 rounded-2xl shadow-lg border border-[#fce7f3] rotate-2 hover:rotate-0 transition-transform">
+          <div class="border border-dashed border-[#fda4af]/60 rounded-xl p-3 text-center space-y-1.5 bg-white/70">
+            <span class="text-[9px] font-bold uppercase tracking-wider text-[#991b1b] bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200">
+              💌 Lời Yêu Thương
+            </span>
+            <h4 class="font-cursive text-xl text-[#991b1b]">Bé An Khánh Tròn 1 Tuổi</h4>
+            <p class="text-[10px] text-slate-600 font-serif italic">
+              &ldquo;Cảm ơn con gái đã đến bên ba mẹ. Chúc thiên thần nhỏ luôn bình an, mạnh khỏe và rạng rỡ mỗi ngày!&rdquo;
+            </p>
+            <div class="pt-1 border-t border-rose-100 flex items-center justify-between text-[9px] text-[#881337] font-semibold">
+              <span>365 Ngày Lớn Khôn</span>
+              <span>Ba Trung & Mẹ Hon 💕</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ảnh 3 bên phải -->
+        <div class="col-span-6 bg-white p-3 pb-4 rounded-2xl shadow-xl border border-rose-100 -rotate-2 hover:rotate-0 transition-transform">
+          <div class="aspect-[3/4] rounded-xl overflow-hidden bg-rose-50">
+            <img src="./image/baby-3.svg" onerror="this.src='./image/baby-3.jpg'" class="w-full h-full object-cover">
+          </div>
+          <p class="font-cursive text-xl text-[#991b1b] text-center mt-2">Áo Dài Đón Tết</p>
+        </div>
+      </div>
+
+      <!-- Tầng 3: Ảnh 4 & Ảnh 5 -->
+      <div class="grid grid-cols-12 gap-3 items-center">
+        <div class="col-span-6 bg-white p-3 pb-4 rounded-2xl shadow-xl border border-rose-100 rotate-3 hover:rotate-0 transition-transform">
+          <div class="aspect-[3/4] rounded-xl overflow-hidden bg-rose-50">
+            <img src="./image/baby-4.svg" onerror="this.src='./image/baby-4.jpg'" class="w-full h-full object-cover">
+          </div>
+          <p class="font-cursive text-lg text-[#991b1b] text-center mt-1.5">Chiếc Bánh Đầu Đời</p>
+        </div>
+
+        <div class="col-span-6 bg-white p-3 pb-4 rounded-2xl shadow-xl border border-purple-100 -rotate-3 hover:rotate-0 transition-transform -mt-4">
+          <div class="aspect-[3/4] rounded-xl overflow-hidden bg-purple-50">
+            <img src="./image/baby-5.svg" onerror="this.src='./image/baby-5.jpg'" class="w-full h-full object-cover">
+          </div>
+          <p class="font-cursive text-lg text-purple-900 text-center mt-1.5">Bước Chân Đầu Đời</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Đếm ngược thuần túy -->
+    <div class="bg-white/95 rounded-3xl p-5 sm:p-6 border border-[#fce7f3] shadow-md text-center space-y-3">
+      <p class="text-xs font-semibold uppercase tracking-wider text-[#991b1b]">Đếm Ngược Đến Giờ Khai Tiệc</p>
+      <p class="text-xs text-slate-500">11 Giờ 00 Sáng • Chủ Nhật, 18.10.2026 (09.09 ÂL)</p>
+      <div id="countdown" class="text-2xl sm:text-3xl font-bold font-serif text-[#991b1b] tabular-nums pt-1">Đang tính...</div>
+    </div>
+
+    <!-- Chân trang -->
+    <footer class="text-center text-xs text-slate-400 pt-2 pb-10 space-y-1">
+      <p class="font-serif italic text-slate-600">
+        &ldquo;Sự hiện diện của quý khách là lời chúc ý nghĩa nhất dành cho bé và gia đình&rdquo;
+      </p>
+      <p class="text-[11px] text-slate-400">
+        Kính mời bởi <strong>TRUNG - HON</strong> • Tư Gia (Khóm Hóa Thành, Đông Thành, Vĩnh Long)
+      </p>
+    </footer>
+  </main>
+
+  <!-- Nút Bật/Tắt Nhạc Nổi Ở Góc -->
+  <div class="fixed bottom-5 right-5 z-40">
+    <button id="musicBtn" onclick="toggleAudio()" class="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/95 border border-[#fda4af] text-[#991b1b] font-semibold text-xs shadow-lg">
+      🎵 <span id="musicLabel">Đang phát nhạc</span>
+    </button>
+  </div>
+
+  <script>
+    let ctx = null, isPlaying = false, noteTimer = null;
+    const notes = [
+      { f: 261.63, d: 0.75 }, { f: 261.63, d: 0.25 }, { f: 293.66, d: 1 }, { f: 261.63, d: 1 }, { f: 349.23, d: 1 }, { f: 329.63, d: 2 },
+      { f: 261.63, d: 0.75 }, { f: 261.63, d: 0.25 }, { f: 293.66, d: 1 }, { f: 261.63, d: 1 }, { f: 392.00, d: 1 }, { f: 349.23, d: 2 },
+      { f: 261.63, d: 0.75 }, { f: 261.63, d: 0.25 }, { f: 523.25, d: 1 }, { f: 440.00, d: 1 }, { f: 349.23, d: 1 }, { f: 329.63, d: 1 }, { f: 293.66, d: 1.5 },
+      { f: 493.88, d: 0.75 }, { f: 493.88, d: 0.25 }, { f: 440.00, d: 1 }, { f: 349.23, d: 1 }, { f: 392.00, d: 1 }, { f: 349.23, d: 2 },
+      { f: 0, d: 1 }
+    ];
+    let noteIdx = 0;
+
+    function initAudio() {
+      if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+      if (ctx.state === 'suspended') ctx.resume();
+    }
+
+    function playNote(freq, dur) {
+      if (!ctx || freq <= 0) return;
+      try {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(0.001, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.18, ctx.currentTime + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur * 0.95);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + dur);
+      } catch(e){}
+    }
+
+    function stepMusic() {
+      if (!isPlaying) return;
+      const n = notes[noteIdx];
+      const dur = n.d * (60 / 110);
+      if (n.f > 0) playNote(n.f, dur);
+      noteIdx = (noteIdx + 1) % notes.length;
+      noteTimer = setTimeout(stepMusic, dur * 1000);
+    }
+
+    function startMusic() {
+      initAudio();
+      if (isPlaying) return;
+      isPlaying = true;
+      document.getElementById('musicLabel').innerText = 'Đang phát nhạc';
+      stepMusic();
+    }
+
+    function toggleAudio() {
+      if (isPlaying) {
+        isPlaying = false;
+        if (noteTimer) clearTimeout(noteTimer);
+        document.getElementById('musicLabel').innerText = 'Bật nhạc nền';
+      } else {
+        startMusic();
+      }
+    }
+
+    window.addEventListener('load', () => {
+      startMusic();
+      const unlock = () => {
+        startMusic();
+        ['click', 'touchstart', 'scroll'].forEach(e => window.removeEventListener(e, unlock));
+      };
+      ['click', 'touchstart', 'scroll'].forEach(e => window.addEventListener(e, unlock, { once: true }));
+    });
+
+    const target = new Date('2026-10-18T11:00').getTime();
+    function tick() {
+      const now = new Date().getTime();
+      const diff = target - now;
+      if (diff <= 0) {
+        document.getElementById('countdown').innerText = 'Hôm nay là ngày vui của bé!';
+        return;
+      }
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById('countdown').innerText = d + ' Ngày ' + h + ' Giờ ' + m + ' Phút ' + s + ' Giây';
+    }
+    setInterval(tick, 1000);
+    tick();
+
+    const canvas = document.getElementById('fireworksCanvas');
+    const c = canvas.getContext('2d');
+    let W = canvas.width = window.innerWidth, H = canvas.height = window.innerHeight;
+    window.addEventListener('resize', () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; });
+    let particles = [];
+    const colors = ['#f43f5e', '#fb7185', '#f59e0b', '#fbbf24', '#ec4899'];
+
+    function burst(x, y) {
+      if (particles.length > 50) return;
+      const px = x || (W * (0.3 + Math.random() * 0.4));
+      const py = y || (H * (0.2 + Math.random() * 0.25));
+      for (let i = 0; i < 30; i++) {
+        const a = Math.random() * Math.PI * 2, sp = Math.random() * 3.5 + 1.2;
+        particles.push({ x: px, y: py, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, a: 1, c: colors[Math.floor(Math.random() * colors.length)] });
+      }
+    }
+    setTimeout(() => burst(), 600);
+
+    function loop() {
+      if (document.hidden) { requestAnimationFrame(loop); return; }
+      if (particles.length === 0) { c.clearRect(0, 0, W, H); requestAnimationFrame(loop); return; }
+      c.clearRect(0, 0, W, H);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx; p.y += p.vy; p.vy += 0.04; p.a -= 0.02;
+        if (p.a <= 0) { particles.splice(i, 1); continue; }
+        c.save(); c.globalAlpha = p.a; c.fillStyle = p.c;
+        c.beginPath(); c.arc(p.x, p.y, 2, 0, Math.PI * 2); c.fill(); c.restore();
+      }
+      requestAnimationFrame(loop);
+    }
+    loop();
+  </script>
+</body>
+</html>
