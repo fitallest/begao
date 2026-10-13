@@ -109,13 +109,13 @@
 
     <!-- Nút Chỉ Đường Google Maps -->
     <div class="text-center">
-      <a href="https://www.google.com/maps/search/?api=1&query=Kh%C3%B3m+H%C3%B3a+Th%C3%A0nh+Ph%C6%B0%E1%BB%9Dng+%C4%90%C3%B4ng+Th%C3%A0nh+V%C4%A9nh+Long" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl bg-white hover:bg-rose-50 text-[#991b1b] text-xs sm:text-sm font-semibold border border-[#fda4af] shadow-md transition-all active:scale-95">
+      <a href="https://maps.app.goo.gl/vknpmrXkD6VcJi8W8" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl bg-white hover:bg-rose-50 text-[#991b1b] text-xs sm:text-sm font-semibold border border-[#fda4af] shadow-md transition-all active:scale-95">
         📍 Xem Chỉ Đường Google Maps Đến Tư Gia
       </a>
     </div>
 
     <!-- 5 Khoảnh Khắc Đáng Yêu Của Bé (Bố cục Scrapbook hài hòa không có chỗ trống) -->
-    <div class="space-y-6 pt-2">
+    <div id="photo-scrapbook" class="space-y-6 pt-2 scroll-mt-4">
       <div class="text-center">
         <p class="font-cursive text-3xl sm:text-4xl text-[#991b1b]">5 Khoảnh Khắc Đáng Yêu Của Bé</p>
         <p class="text-xs text-slate-500">Chặng đường 365 ngày lớn khôn (ảnh từ thư mục ./image/)</p>
@@ -202,10 +202,22 @@
     </footer>
   </main>
 
+  <!-- Bouncing Scroll Cue (Chỉ báo cuộn nhún nhảy) -->
+  <div id="scrollCue" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-30 transition-all duration-500 ease-out opacity-100 translate-y-0">
+    <button onclick="scrollToAlbum()" class="group flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-white/95 backdrop-blur-md border border-[#fda4af] text-[#991b1b] shadow-xl shadow-rose-950/10 hover:bg-rose-50 hover:border-[#f43f5e] active:scale-95 transition-all text-xs sm:text-sm font-semibold select-none cursor-pointer" title="Cuộn xuống xem album ảnh của bé">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f43f5e] opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-[#e11d48]"></span>
+      </span>
+      <span class="tracking-wide">Cuộn xem album bé Gạo</span>
+      <span class="animate-bounce text-sm inline-block">👇</span>
+    </button>
+  </div>
+
   <!-- Nút Bật/Tắt Nhạc Nổi Ở Góc -->
-  <div class="fixed bottom-5 right-5 z-40">
-    <button id="musicBtn" onclick="toggleAudio()" class="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/95 border border-[#fda4af] text-[#991b1b] font-semibold text-xs shadow-lg">
-      🎵 <span id="musicLabel">Đang phát nhạc</span>
+  <div class="fixed bottom-5 right-3 sm:right-5 z-40">
+    <button id="musicBtn" onclick="toggleAudio()" class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-2 rounded-full bg-white/95 border border-[#fda4af] text-[#991b1b] font-semibold text-xs shadow-lg active:scale-95 cursor-pointer">
+      🎵 <span id="musicLabel" class="hidden sm:inline">Đang phát nhạc</span>
     </button>
   </div>
 
@@ -327,6 +339,69 @@
       requestAnimationFrame(loop);
     }
     loop();
+
+    // --- Chỉ báo cuộn & Hiệu ứng nhấp cuộn nhẹ nhàng ---
+    let lastUserAction = Date.now();
+    let isNudging = false;
+    let nudgeReturnTimer = null;
+    const scrollCueEl = document.getElementById('scrollCue');
+
+    function scrollToAlbum() {
+      lastUserAction = Date.now();
+      if (nudgeReturnTimer) clearTimeout(nudgeReturnTimer);
+      const target = document.getElementById('photo-scrapbook');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: window.innerHeight * 0.75, behavior: 'smooth' });
+      }
+    }
+
+    // Ẩn / hiện nút chỉ báo khi cuộn trang
+    window.addEventListener('scroll', () => {
+      if (!isNudging) lastUserAction = Date.now();
+      if (!scrollCueEl) return;
+      if (window.scrollY > 70) {
+        scrollCueEl.classList.add('opacity-0', 'pointer-events-none', 'translate-y-6');
+        scrollCueEl.classList.remove('opacity-100', 'translate-y-0');
+      } else {
+        scrollCueEl.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-6');
+        scrollCueEl.classList.add('opacity-100', 'translate-y-0');
+      }
+    }, { passive: true });
+
+    // Hủy bỏ nhịp trả về nếu người dùng chủ động chạm/lăn chuột
+    ['touchstart', 'wheel', 'pointerdown', 'keydown', 'mousedown'].forEach(ev => {
+      window.addEventListener(ev, () => {
+        lastUserAction = Date.now();
+        if (nudgeReturnTimer) {
+          clearTimeout(nudgeReturnTimer);
+          nudgeReturnTimer = null;
+          isNudging = false;
+        }
+      }, { passive: true });
+    });
+
+    // Cuộn nhẹ xuống một chút rồi êm ái trượt về đỉnh
+    function triggerNudge() {
+      if (window.scrollY > 25) return;
+      if (Date.now() - lastUserAction < 3000) return;
+      if (document.hidden) return;
+
+      isNudging = true;
+      const nudgeDistance = window.innerWidth < 640 ? 55 : 75;
+      window.scrollTo({ top: nudgeDistance, behavior: 'smooth' });
+
+      nudgeReturnTimer = setTimeout(() => {
+        if (window.scrollY <= nudgeDistance + 25) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        setTimeout(() => { isNudging = false; }, 450);
+      }, 550);
+    }
+
+    setTimeout(triggerNudge, 3800);
+    setInterval(triggerNudge, 11000);
   </script>
 </body>
 </html>
