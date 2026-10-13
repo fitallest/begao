@@ -118,9 +118,7 @@ export const ArchInvitationCard: React.FC<ArchInvitationCardProps> = ({
       {/* Quick Action Buttons for Guests */}
       <div className="flex items-center justify-center gap-3 pt-1">
         <a
-          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-            `${data.venueAddress}`
-          )}`}
+          href={data.mapUrl || 'https://maps.app.goo.gl/vknpmrXkD6VcJi8W8'}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-white hover:bg-rose-50 text-[#991b1b] text-xs sm:text-sm font-semibold border border-[#fda4af] shadow-md transition-all active:scale-95"

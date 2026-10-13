@@ -9,7 +9,8 @@ export const initialInvitationData: InvitationData = {
   eventDateDisplay: 'Chủ Nhật, 18.10.2026 (09.09 ÂL)',
   venueName: 'Tư Gia',
   venueAddress: 'Khóm Hóa Thành - Phường Đông Thành - Tỉnh Vĩnh Long',
-  mapQuery: 'Khóm Hóa Thành Phường Đông Thành Vĩnh Long',
+  mapQuery: 'https://maps.app.goo.gl/vknpmrXkD6VcJi8W8',
+  mapUrl: 'https://maps.app.goo.gl/vknpmrXkD6VcJi8W8',
   parentPhone: '0908 123 456',
   parentNames: 'TRUNG - HON',
   greetingMessage:

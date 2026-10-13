@@ -8,6 +8,7 @@ export interface InvitationData {
   venueName: string;
   venueAddress: string;
   mapQuery: string;
+  mapUrl?: string;
   parentPhone: string;
   parentNames: string;
   greetingMessage: string;

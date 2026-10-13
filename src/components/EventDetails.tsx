@@ -142,9 +142,7 @@ export const EventDetails: React.FC<EventDetailsProps> = ({ data }) => {
             </button>
 
             <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                data.venueAddress
-              )}`}
+              href={data.mapUrl || 'https://maps.app.goo.gl/vknpmrXkD6VcJi8W8'}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-amber-950 text-xs font-semibold shadow-sm transition-all active:scale-95"

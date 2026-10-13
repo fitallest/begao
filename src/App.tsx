@@ -12,13 +12,19 @@ import { FireworksCanvas } from './components/FireworksCanvas';
 import { ArchInvitationCard } from './components/ArchInvitationCard';
 import { PlayfulPhotoScrapbook } from './components/PlayfulPhotoScrapbook';
 import { CountdownSection } from './components/CountdownSection';
+import { ScrollCueAndNudge } from './components/ScrollCueAndNudge';
 
 export default function App() {
   const [data, setData] = useState<InvitationData>(() => {
-    const saved = localStorage.getItem('thoi_noi_khanh_data_v5');
+    const saved = localStorage.getItem('thoi_noi_khanh_data_v6') || localStorage.getItem('thoi_noi_khanh_data_v5');
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        return {
+          ...initialInvitationData,
+          ...parsed,
+          mapUrl: parsed.mapUrl || 'https://maps.app.goo.gl/vknpmrXkD6VcJi8W8',
+        };
       } catch {
         // fallback
       }
@@ -31,7 +37,7 @@ export default function App() {
 
   // Sync to localStorage
   useEffect(() => {
-    localStorage.setItem('thoi_noi_khanh_data_v5', JSON.stringify(data));
+    localStorage.setItem('thoi_noi_khanh_data_v6', JSON.stringify(data));
   }, [data]);
 
   // Autoplay background music as soon as web finishes loading
@@ -94,10 +100,12 @@ export default function App() {
         />
 
         {/* 2. Playful Scrapbook Photos (5 ảnh to nhỏ nghiêng qua lại phá cách tự nhiên) */}
-        <PlayfulPhotoScrapbook
-          data={data}
-          onUpdatePhotoUrl={handleUpdatePhotoUrl}
-        />
+        <div id="photo-scrapbook" className="scroll-mt-4">
+          <PlayfulPhotoScrapbook
+            data={data}
+            onUpdatePhotoUrl={handleUpdatePhotoUrl}
+          />
+        </div>
 
         {/* 3. Pure Countdown Section (Không còn các nút calendar bên dưới) */}
         <CountdownSection data={data} />
@@ -113,23 +121,28 @@ export default function App() {
         </footer>
       </main>
 
+      {/* Floating Scroll Cue with Gentle Nudge & Smooth Scroll */}
+      <ScrollCueAndNudge targetId="photo-scrapbook" />
+
       {/* Floating Music Toggle in Bottom Corner */}
-      <div className="fixed bottom-5 right-5 z-40">
+      <div className="fixed bottom-5 right-3 sm:right-5 z-40">
         <button
           type="button"
           onClick={handleToggleAudio}
-          className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/95 backdrop-blur-md border border-[#fda4af] text-[#991b1b] shadow-lg text-xs font-semibold hover:bg-rose-50 transition-all active:scale-95"
+          className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-2 rounded-full bg-white/95 backdrop-blur-md border border-[#fda4af] text-[#991b1b] shadow-lg text-xs font-semibold hover:bg-rose-50 transition-all active:scale-95 cursor-pointer"
           title={isAudioPlaying ? 'Tạm dừng nhạc nền' : 'Bật nhạc nền'}
         >
           {isAudioPlaying ? (
             <>
               <Volume2 className="w-4 h-4 text-[#e11d48] animate-pulse" />
-              <span>Đang phát nhạc 🎵</span>
+              <span className="hidden sm:inline">Đang phát nhạc 🎵</span>
+              <span className="inline sm:hidden">🎵</span>
             </>
           ) : (
             <>
               <VolumeX className="w-4 h-4 text-slate-400" />
-              <span>Bật nhạc nền</span>
+              <span className="hidden sm:inline">Bật nhạc nền</span>
+              <span className="inline sm:hidden">🔇</span>
             </>
           )}
         </button>

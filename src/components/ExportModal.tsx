@@ -141,7 +141,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ data, isOpen, onClose 
       <p class="text-xs font-semibold uppercase tracking-wider text-[#991b1b]">Đếm Ngược Ngày Thôi Nôi</p>
       <div id="countdown" class="text-2xl font-bold font-serif text-[#991b1b] tabular-nums">Đang tính...</div>
       <div class="pt-2">
-        <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.venueAddress)}" target="_blank" class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#991b1b] text-white text-xs font-semibold shadow-sm">
+        <a href="${data.mapUrl || 'https://maps.app.goo.gl/vknpmrXkD6VcJi8W8'}" target="_blank" class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#991b1b] text-white text-xs font-semibold shadow-sm">
           Chỉ Đường Google Maps Đến Tư Gia
         </a>
       </div>
